@@ -1,0 +1,35 @@
+ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.note {
+  width: 200px;
+  height: auto;
+  min-height: 100px;
+  display: block;
+  padding: 10px;
+  margin: 10px;
+  float: left;
+  position: relative;
+  text-align: center;
+}
+
+.note .side {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.note .front {
+  background: #f9ed77;
+  z-index: 2;
+}
+
+.note .back {
+  background: #44b6d8;
+  z-index: 1;
+}

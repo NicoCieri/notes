@@ -1,19 +1,25 @@
-import * as ActionTypes from ''
+import * as ActionTypes from '../actions/actionTypes'
 
 const initialState = [];
 
 export default function notesReducer(state = initialState, action) {
   switch (action.type) {
-    case 'ADD_NOTE':
+    case ActionTypes.ADD_NOTE:
       return [ ...state, {
         ...action.payload.note,
-        id: state.reduce((maxId, note) => Math.max(note.id, maxId), 1) +1
+        open: false,
+        id: state.reduce((maxId, note) => Math.max(note.id, maxId), 0) +1
         }
       ]
-    case 'OPEN_NOTE':
+    case ActionTypes.OPEN_NOTE:
       return state.map((note) => note.id === action.payload.id ? { ...note, open: true } : note )
-    case 'CLOSE_NOTE':
+    case ActionTypes.CLOSE_NOTE:
+      console.log(action);
       return state.map((note) => note.id === action.payload.id ? { ...note, open: false } : note )
+    case ActionTypes.UPDATE_POSITION:
+      return state.map((note) => note.id === action.payload.id ? { ...note, open: true } : note )
+    case ActionTypes.CLOSE_ALL_NOTES:
+      return state.map((note) => ({ ...note, open: false }) )
     default:
       return state;
   }

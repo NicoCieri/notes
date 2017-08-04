@@ -13,19 +13,17 @@ class NotesForm extends Component {
 
   renderField(field) {
     const { meta: { touched, error } } = field;
-    const className = `input-wrapper ${touched && error ? 'has-error' : ''}`;
+    const className = `form-group ${touched && error ? 'has-error' : ''}`;
 
     return (
       <div className={className}>
         <input
-          className="input"
+          className="form-control"
           type="text"
           autoComplete="off"
           {...field.input}
         />
-        <p className="error">
-          {touched ? error : ''}
-        </p>
+
       </div>
     )
   }
@@ -43,13 +41,19 @@ class NotesForm extends Component {
 
     return (
       <div className="notes-form">
-        <form onSubmit={handleSubmit(this.onSubmit)}>
-          <Field
-            name="text"
-            component={this.renderField}
-          />
-          <button type="submit"className="btn">Add Note </button>
-        </form>
+        <div className="row">
+          <form onSubmit={handleSubmit(this.onSubmit)}>
+            <div className="col-sm-10">
+              <Field
+                name="text"
+                component={this.renderField}
+              />
+            </div>
+            <div className="col-sm-2">
+              <button type="submit"className="btn">Add Note </button>
+            </div>
+          </form>
+        </div>
       </div>
     )
   }

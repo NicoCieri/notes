@@ -20,3 +20,9 @@ export const closeNote = (id) => {
     payload: { id }
   }
 }
+
+export const closeAllNotes = () => {
+  return {
+    type: actionTypes.CLOSE_ALL_NOTES
+  }
+}

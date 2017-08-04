@@ -1,4 +1,16 @@
-ul {
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0px;
+  padding: 10px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.note-list {
   list-style: none;
   margin: 0px;
   padding: 0px;
@@ -10,26 +22,65 @@ ul {
   min-height: 100px;
   display: block;
   padding: 10px;
-  margin: 10px;
+  margin: 5px;
   float: left;
   position: relative;
   text-align: center;
+  transition: all .4s;
+  box-sizing: border-box;
 }
 
-.note .side {
+.note.open {
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  margin: 0px;
+  z-index: 2;
+}
+
+.note .content {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0px;
   left: 0px;
+  transition: 0.6s;
+	transform-style: preserve-3d;
+}
+
+.note.open .content {
+  transform: rotateY(180deg);
+}
+
+.note .side {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  backface-visibility: hidden;
+  box-sizing: border-box;
 }
 
 .note .front {
   background: #f9ed77;
   z-index: 2;
+  transform: rotateY(0deg);
+  cursor: pointer;
 }
 
 .note .back {
   background: #44b6d8;
   z-index: 1;
+  transform: rotateY(180deg);
+}
+
+.note .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
 }

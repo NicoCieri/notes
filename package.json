@@ -1,9 +1,9 @@
 {
-  "name": "redux-simple-starter",
+  "name": "sticky-notes",
   "version": "1.0.0",
-  "description": "Simple starter package for Redux with React and Babel support",
+  "description": "Simple sticky notes example built with React and Redux",
   "main": "index.js",
-  "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
+  "repository": "git@github.com:NicoCieri/notes.git",
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
@@ -27,12 +27,10 @@
   },
   "dependencies": {
     "babel-preset-stage-1": "^6.1.18",
-    "lodash": "^3.10.1",
     "react": "^0.14.3",
     "react-dnd": "^2.4.0",
     "react-dnd-html5-backend": "^2.4.1",
     "react-dom": "^0.14.3",
-    "react-draggable": "^2.2.6",
     "react-redux": "4.3.0",
     "react-router": "^2.0.1",
     "redux": "^3.0.4",

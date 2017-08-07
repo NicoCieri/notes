@@ -8,12 +8,16 @@ body {
   padding: 10px;
   position: relative;
   box-sizing: border-box;
+  overflow: hidden;
+  background: url(http://new.graphicpanic.com/wp-content/uploads/2015/09/cork-board-background.jpg) center;
+
 }
 
 .note-list {
   list-style: none;
   margin: 0px;
-  padding: 0px;
+  padding: 20px 0px;
+  box-sizing: border-box;
 }
 
 .note {
@@ -26,8 +30,9 @@ body {
   float: left;
   position: relative;
   text-align: center;
-  transition: all .4s;
+  /*transition: width .4s, height .4s;*/
   box-sizing: border-box;
+  will-change: width, height;
 }
 
 .note.open {
@@ -38,6 +43,7 @@ body {
   left: 10px;
   margin: 0px;
   z-index: 2;
+  transform: none !important;
 }
 
 .note .content {
@@ -48,10 +54,14 @@ body {
   left: 0px;
   transition: 0.6s;
 	transform-style: preserve-3d;
+  transform: rotate(-2deg);
+  box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.2);
+  will-change: transform, box-shadow;
 }
 
 .note.open .content {
   transform: rotateY(180deg);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, .5);
 }
 
 .note .side {
@@ -63,19 +73,35 @@ body {
   left: 0px;
   backface-visibility: hidden;
   box-sizing: border-box;
+  will-change: transform;
 }
 
 .note .front {
+  padding: 20px 40px;
   background: #f9ed77;
   z-index: 2;
   transform: rotateY(0deg);
   cursor: pointer;
 }
 
+.note .front p {
+  line-height: 22px;
+  max-height: 66px;
+  overflow: hidden;
+}
+
 .note .back {
+  padding: 40px 20px;
+  color: #FFF;
   background: #44b6d8;
   z-index: 1;
   transform: rotateY(180deg);
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.note .back p {
+  font-size: 36px;
 }
 
 .note .close-btn {
@@ -83,4 +109,32 @@ body {
   top: 10px;
   right: 10px;
   cursor: pointer;
+}
+
+.note .pin {
+  width: 22px;
+  height: 22px;
+  display: block;
+  border-radius: 100%;
+  background: red;
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 2);
+}
+
+.note .pin:before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  display: block;
+  border-radius: 100%;
+  background: red;
+  margin-top: -2px;
+  margin-left: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
 }

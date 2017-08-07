@@ -11,9 +11,9 @@ class NotesForm extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  renderField(field) {
+  renderFieldWithButton(field) {
     const { meta: { touched, error } } = field;
-    const className = `form-group ${touched && error ? 'has-error' : ''}`;
+    const className = `input-group ${touched && error ? 'has-error' : ''}`;
 
     return (
       <div className={className}>
@@ -21,9 +21,12 @@ class NotesForm extends Component {
           className="form-control"
           type="text"
           autoComplete="off"
+          placeholder={field.placeholder}
           {...field.input}
         />
-
+        <span className="input-group-btn">
+          <button className="btn btn-default" type="submit">Add note</button>
+        </span>
       </div>
     )
   }
@@ -41,18 +44,18 @@ class NotesForm extends Component {
 
     return (
       <div className="notes-form">
-        <div className="row">
-          <form onSubmit={handleSubmit(this.onSubmit)}>
-            <div className="col-sm-10">
-              <Field
-                name="text"
-                component={this.renderField}
-              />
-            </div>
-            <div className="col-sm-2">
-              <button type="submit"className="btn">Add Note </button>
-            </div>
-          </form>
+        <div className="container">
+          <div className="row">
+            <form onSubmit={handleSubmit(this.onSubmit)}>
+              <div className="col-sm-12">
+                <Field
+                  name="text"
+                  component={this.renderFieldWithButton}
+                  placeholder="Note text"
+                />
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     )
